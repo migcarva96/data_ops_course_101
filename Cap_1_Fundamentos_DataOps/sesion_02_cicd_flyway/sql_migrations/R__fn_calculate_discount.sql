@@ -55,5 +55,4 @@ $$;
 -- incorrectos, no solo lentos.
 
 COMMENT ON FUNCTION fn_calculate_discount(NUMERIC) IS
-    'Tasa de descuento por volumen: 5% desde USD 500, 10% desde 2000, 15% desde 5000.';
-    
+    'Tasa de descuento por volumen: 5% desde USD 500, 10% desde 2000, 15% desde 5000.';    
