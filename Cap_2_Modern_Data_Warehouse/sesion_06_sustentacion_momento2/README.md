@@ -9,16 +9,18 @@
 ## Objetivo
 
 Sustentar el pipeline de ingesta hacia Snowflake, construido con el patrón de las sesiones
-4 y 5 pero aplicado sobre el **proyecto propio** de cada equipo (el mismo del Momento 1),
-demostrando en vivo su ejecución completa y su idempotencia.
+4 y 5 pero aplicado sobre el **proyecto propio** de cada equipo (el mismo del Momento 1):
+ingesta relacional con manejo de schema drift, ingesta semi-estructurada vía External
+Stage, orquestación con Snowflake Tasks, y gobernanza con RBAC y Data Masking.
 
 ## Formato
 
 - **Peso:** 30 % de la nota final.
 - **Duración por equipo:** 10 min de exposición + 5 min de preguntas.
 - **Fecha límite de código:** 22/08/2026, 07:00.
-- **Demo en vivo obligatoria**, incluyendo **doble ejecución** del pipeline para demostrar
-  idempotencia y mostrar la bitácora antes y después.
+- **Demo en vivo obligatoria**: ejecutar la ingesta relacional, disparar el DAG de Tasks y
+  mostrar `TASK_HISTORY`, y mostrar la diferencia de visibilidad entre roles sobre el dato
+  protegido.
 
 ## Contenido de la carpeta
 

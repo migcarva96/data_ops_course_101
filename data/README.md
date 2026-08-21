@@ -42,7 +42,7 @@ data/
 **Total: 16 390 registros.** Los cinco JSON **se versionan**: son pequeños y constituyen la
 fuente de verdad del caso. `output/` **no** se versiona (excluido en
 [.gitignore](../.gitignore)); ahí escriben los scripts de extracción de la Sesión 4 antes de
-subir a un Internal Stage.
+cargar a Snowflake.
 
 ### Forma de los datos
 
@@ -81,8 +81,17 @@ Comprobado el 31/07/2026 sobre los cinco archivos:
 |---|---|
 | 1 — Estado base | Carga inicial en la branch `dev` de Neon vía [`inyeccion_semilla.py`](../Cap_1_Fundamentos_DataOps/sesion_01_estado_base/codigo/inyeccion_semilla.py) |
 | 2 — CI/CD con Flyway | El schema de estas tablas es el baseline de las migraciones |
-| 4 y 5 — Ingesta | Se extraen desde Neon y se cargan a Snowflake vía Internal Stage |
+| 4 — Ingesta relacional | Se extraen desde Neon y se cargan a Snowflake con `write_pandas` |
 | 7 — dbt | Son las `sources` del proyecto de transformación |
+
+## Un segundo dataset: leads de mercadeo (Sesión 5)
+
+La [Sesión 5](../Cap_2_Modern_Data_Warehouse/sesion_05_external_stages_json/) usa un
+dataset **independiente** de Parch & Posey — un export sintético de campañas de
+mercadeo en JSON semi-estructurado — para practicar `VARIANT` y `LATERAL FLATTEN`.
+
+> 🚧 **No está en el repositorio todavía.** Se entrega en clase, no antes — ver el README
+> de la Sesión 5.
 
 ## Origen y licencia
 

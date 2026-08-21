@@ -561,7 +561,7 @@ Extrayendo orders desde Neon...
 
 ### Próxima sesión
 
-**21/08 · Internal Stages e idempotencia.** Hoy cargamos con `write_pandas` y `overwrite=True` — funciona, pero no escala ni es idempotente de verdad. La Sesión 5 resuelve ambas cosas con `PUT` + `COPY INTO`, una bitácora de ejecución y validaciones automatizadas.
+**21/08 · External Stages, JSON y gobernanza.** Hoy resolvimos datos relacionales con schema fijo. La Sesión 5 cambia de paradigma: datos semi-estructurados que aterrizan sin esquema previo, orquestación nativa con Tasks, y protección de lo sensible con RBAC y Masking.
 
 </div>
 </div>

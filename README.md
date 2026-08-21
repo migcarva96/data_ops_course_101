@@ -29,8 +29,8 @@ no son ejercicios desconectados.
 1. Versionar la evolución del esquema de una base de datos relacional con migraciones
    idempotentes y reproducibles (Flyway).
 2. Automatizar el despliegue de esos cambios mediante un workflow de CI/CD (GitHub Actions).
-3. Implementar la ingesta de datos hacia un Cloud Data Warehouse usando Internal Stages y
-   extracción programática en Python.
+3. Implementar la ingesta de datos hacia un Cloud Data Warehouse: extracción programática
+   en Python (relacional) e ingesta nativa de JSON semi-estructurado desde External Stages.
 4. Modelar transformaciones analíticas con dbt, aplicando materializaciones incrementales
    y pruebas de calidad de datos.
 5. Entregar el resultado en una capa de consumo (Streamlit in Snowflake) y sustentar las
@@ -64,7 +64,7 @@ lleva a Snowflake en el Momento 2 y se transforma con dbt en el Momento 3. Ver e
 | Migraciones de esquema | **Flyway** (CLI) | Evolución versionada y auditable de la BD |
 | CI/CD | **GitHub Actions** | Aplica migraciones automáticamente por entorno |
 | Extracción | **Python** (`uv` + librerías nativas) | Extrae de Neon y produce archivos para carga |
-| Cloud DW | **Snowflake** | Almacenamiento analítico; Internal Stages para landing |
+| Cloud DW | **Snowflake** | Almacenamiento analítico; External Stages (S3) para JSON, Tasks para orquestación nativa |
 | Transformación | **dbt Cloud** | Modelado en capas, materializaciones incrementales, tests |
 | Entrega | **Streamlit in Snowflake** | Dashboard / kiosk analítico sobre los marts |
 
@@ -113,7 +113,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 | 2 | 08/08/2026 | Sábado | 08:00–11:00 | 33-302 | [CI/CD en base de datos con Flyway](Cap_1_Fundamentos_DataOps/sesion_02_cicd_flyway/) | Cap. 1 |
 | 3 | 14/08/2026 | Viernes | 18:00–21:00 | 35-203 | **Sustentación Momento 1** *(evaluativa)* | Cap. 1 |
 | 4 | 15/08/2026 | Sábado | 08:00–11:00 | 34-302 | [Ingesta hacia Snowflake](Cap_2_Modern_Data_Warehouse/sesion_04_ingesta_snowflake/) | Cap. 2 |
-| 5 | 21/08/2026 | Viernes | 18:00–21:00 | 35-203 | [Internal Stages y carga gobernada](Cap_2_Modern_Data_Warehouse/sesion_05_internal_stages/) | Cap. 2 |
+| 5 | 21/08/2026 | Viernes | 18:00–21:00 | 35-203 | [External Stages, JSON y gobernanza](Cap_2_Modern_Data_Warehouse/sesion_05_external_stages_json/) | Cap. 2 |
 | 6 | 22/08/2026 | Sábado | 08:00–11:00 | 33-302 | **Sustentación Momento 2** *(evaluativa)* | Cap. 2 |
 | 7 | 28/08/2026 | Viernes | 18:00–21:00 | 35-203 | [dbt e incremental models](Cap_3_Transformacion_Entrega/sesion_07_dbt_incremental/) | Cap. 3 |
 | 8 | 29/08/2026 | Sábado | 08:00–11:00 | 34-302 | **Sustentación Momento 3 — Final** *(evaluativa)* | Cap. 3 |
@@ -147,7 +147,7 @@ data_ops_course_101/
 │   └── sesion_03_sustentacion_momento1/
 ├── Cap_2_Modern_Data_Warehouse/
 │   ├── sesion_04_ingesta_snowflake/
-│   ├── sesion_05_internal_stages/
+│   ├── sesion_05_external_stages_json/
 │   └── sesion_06_sustentacion_momento2/
 └── Cap_3_Transformacion_Entrega/
     ├── sesion_07_dbt_incremental/
@@ -174,7 +174,7 @@ Momento 1), no sobre Parch & Posey.
 | Momento | Tema | Peso | Se sustenta en | Enunciado |
 |---|---|---|---|---|
 | **1** | CI/CD en Base de Datos (Neon + Flyway + GitHub Actions) | **30 %** | Sesión 3 — viernes 14/08/2026 | [momento_1_cicd_bd.md](evaluaciones/momento_1_cicd_bd.md) |
-| **2** | Cloud DW e Ingesta (Snowflake + Internal Stages) | **30 %** | Sesión 6 — sábado 22/08/2026 | [momento_2_cloud_dw.md](evaluaciones/momento_2_cloud_dw.md) |
+| **2** | Cloud DW e Ingesta (Snowflake: relacional + semi-estructurado + gobernanza) | **30 %** | Sesión 6 — sábado 22/08/2026 | [momento_2_cloud_dw.md](evaluaciones/momento_2_cloud_dw.md) |
 | **3** | End-to-End DataOps (dbt + Streamlit) | **40 %** | Sesión 8 — sábado 29/08/2026 | [momento_3_e2e_dataops.md](evaluaciones/momento_3_e2e_dataops.md) |
 | | | **100 %** | | |
 

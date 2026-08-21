@@ -98,6 +98,13 @@ data/tmp/
 # Documentación interna del docente — no se publica a los estudiantes
 # ---------------------------------------------------------------------------
 TESTING_PLAN_E2E.md
+.teacher_notes_*.md
+
+# Sesión 5: no publicar el dataset ni los scripts hasta la clase — se revelan
+# uno por uno. Quitar estas líneas (o el archivo puntual con `git add -f`)
+# cuando corresponda liberar cada pieza.
+data/marketing_leads_*.json
+Cap_2_Modern_Data_Warehouse/sesion_05_external_stages_json/codigo/*.sql
 
 # ---------------------------------------------------------------------------
 # Sistema operativo y editores
